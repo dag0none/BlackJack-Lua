@@ -8,9 +8,10 @@ function love.load()
     scale = 5
     love.window.setMode(win_w * scale, win_h * scale)
 
-    -- Game States
-    GameState.registerEvents()
-    GameState.switch(bet)
+    -- Global Variables
+    bet = 0
+    coins = 10
+    mousePressed = {}
 
     -- Assets
     assets = {
@@ -27,9 +28,16 @@ function love.load()
     -- Font
     PICO8 = love.graphics.newFont("font/PICO-8.ttf", 5)
     love.graphics.setFont(PICO8)
+
+    -- Game States
+    GameState.registerEvents()
+    GameState.switch(Bet)
 end
 
 function love.update(dt)
+    mouseX, mouseY = love.mouse.getPosition()
+    mouseX = mouseX / scale
+    mouseY = mouseY / scale
 end
 
 function love.keypressed(key)
@@ -39,7 +47,21 @@ function love.keypressed(key)
 end
 
 function love.draw()
+    mousePressed = {}
     love.graphics.scale(scale, scale)
     love.graphics.draw(assets.back, 0, 0)
     love.graphics.draw(assets.frame, 0, 0)
+    love.graphics.printf("player's hand", 0, 113, 128, "center")
+    drawCoin(bet, 64, 47)
+    GameState:draw()
+end
+
+function love.mousepressed(mouseX, mouseY, button)
+    if button == 1 then
+        mousePressed = 1
+    end
+end
+
+function onMouseOver(obj)
+    return not (mouseX < obj.x or mouseY < obj.y or mouseX > obj.x + obj.w or mouseY > obj.y + obj.h)
 end
