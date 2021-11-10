@@ -1,9 +1,9 @@
-function drawCoin(_coin, _x, _y)
+function drawCoin(_coin, _x, _y, _limit)
     -- Take the rest if the coins exceds 20
     local rest = 0
-    if _coin > 20 then
-        rest = _coin - 20
-        _coin = 20
+    if _coin > _limit then
+        rest = _coin - _limit
+        _coin = _limit
     end
     _x = _x - math.ceil(_coin / 5) * 7 -- Decrease the x based on how much stacks do you have
     -- Draw the coins
@@ -16,6 +16,6 @@ function drawCoin(_coin, _x, _y)
     end
     -- Draw the text coins
     if rest > 0 then
-        love.graphics.print("+" .. tostring(rest), 93, _y - 8)
+        love.graphics.print("+" .. tostring(rest), _x + math.ceil(_coin / 5) * 13 + 2, _y - 8)
     end
 end

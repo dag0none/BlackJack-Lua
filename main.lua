@@ -1,5 +1,6 @@
 function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
+    love.math.setRandomSeed(os.time())
     require "scr/requires"
 
     -- Window Setup
@@ -10,7 +11,7 @@ function love.load()
 
     -- Global Variables
     bet = 0
-    coins = 10
+    coins = 20
     mousePressed = {}
 
     -- Assets
@@ -21,8 +22,18 @@ function love.load()
         card_front = love.graphics.newImage("assets/Card_front.png"),
         coin_base = love.graphics.newImage("assets/Coin_Back.png"),
         coin_top = love.graphics.newImage("assets/Coin_Top.png"),
-        minus = love.graphics.newImage("assets/Minus_Icon.png"),
-        plus = love.graphics.newImage("assets/Plus_Icon.png")
+        minus = {
+            love.graphics.newImage("assets/Minus_Icon.png"),
+            love.graphics.newImage("assets/Minus_Icon_High.png")
+        },
+        plus = {
+            love.graphics.newImage("assets/Plus_Icon.png"),
+            love.graphics.newImage("assets/Plus_Icon_High.png")
+        },
+        arrow = {
+            love.graphics.newImage("assets/Arrow.png"),
+            love.graphics.newImage("assets/Arrow_High.png"),
+        }
     }
 
     -- Font
@@ -52,7 +63,6 @@ function love.draw()
     love.graphics.draw(assets.back, 0, 0)
     love.graphics.draw(assets.frame, 0, 0)
     love.graphics.printf("player's hand", 0, 113, 128, "center")
-    drawCoin(bet, 64, 47)
     GameState:draw()
 end
 
