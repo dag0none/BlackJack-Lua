@@ -20,6 +20,8 @@ function createCard(_suit, _value)
 end
 
 function buyCard(_who)
+    sound.card:stop()
+    sound.card:play()
     local s = love.math.random(#cards)
     local v = love.math.random(#cards[s])
     local card = cards[s][v]
@@ -31,7 +33,7 @@ function drawCards(_who, _x, _y)
     for i, card in ipairs(_who) do
         gap = (i - 1) * (26 / (#_who - 1))
         love.graphics.draw(assets.card_front, _x + gap, _y)
+        love.graphics.draw(assets[card.suit], _x + 9 + gap, _y + 13)
         love.graphics.print(tostring(card.value), _x + 3 + gap, _y + 3)
-        love.graphics.print(tostring(card.suit), _x + 3 + gap, _y + 9)
     end
 end

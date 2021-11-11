@@ -29,21 +29,38 @@ function Game:enter()
     }
 
     drawFase = true
+    t = 0
 end
 
 function Game:update(dt)
+    updateScore(player)
+    updateScore(dealer)
+    
     if drawFase == true then
         updateButton(buttonsGAME)
+    else
+        if dealer.score[1] < 17 then
+             t = t + dt
+             if t > 0.7 then
+                 buyCard(dealer)
+                 t = 0
+             end
+        else
+            GameState.switch(Result) 
+        end
     end
-    getScore(player)
-    getScore(dealer)
+    
+
+    if player.score[1] > 21 then
+        GameState.switch(Result)
+    end
 end
 
 function Game:draw()    
-    love.graphics.print("bet", 11, 81)
+    love.graphics.print("bet", 10, 81)
     love.graphics.printf("dealer's hand", 1, 12, 127, "center")
     printScore(player, 93, 88)
-    drawCoin(bet, 17, 104, 5)
+    drawCoin(bet, 16, 104, 5)
 
     drawCards(dealer.hand, 38, 22)
     drawCards(player.hand, 38, 76)
@@ -51,6 +68,8 @@ function Game:draw()
     if drawFase == true then
         love.graphics.draw(assets.card_back, 38, 22)
         drawButton(buttonsGAME)
+        love.graphics.print("?", 93, 33)
+    else 
+        printScore(dealer, 93, 33)
     end
 end 
-

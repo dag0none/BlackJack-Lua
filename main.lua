@@ -11,7 +11,7 @@ function love.load()
 
     -- Global Variables
     bet = 0
-    coins = 20
+    coins = 5
     mousePressed = {}
 
     -- Assets
@@ -22,6 +22,10 @@ function love.load()
         card_front = love.graphics.newImage("assets/Card_front.png"),
         coin_base = love.graphics.newImage("assets/Coin_Back.png"),
         coin_top = love.graphics.newImage("assets/Coin_Top.png"),
+        diamond = love.graphics.newImage("assets/Diamond.png"),
+        club = love.graphics.newImage("assets/Club.png"),
+        spade = love.graphics.newImage("assets/Spade.png"),
+        heart = love.graphics.newImage("assets/Heart.png"),
         minus = {
             love.graphics.newImage("assets/Minus_Icon.png"),
             love.graphics.newImage("assets/Minus_Icon_High.png")
@@ -33,8 +37,22 @@ function love.load()
         arrow = {
             love.graphics.newImage("assets/Arrow.png"),
             love.graphics.newImage("assets/Arrow_High.png"),
+        },
+        restart = {
+            love.graphics.newImage("assets/Restart.png"),
+            love.graphics.newImage("assets/Restart_High.png"),
         }
     }
+
+    -- Musics and sfx
+    sound = {
+        music = love.audio.newSource("music/Music.ogg", "stream"),
+        coin = love.audio.newSource("music/Coin.ogg", "stream"),
+        card = love.audio.newSource("music/Card.ogg", "stream")
+    }
+    sound.music:setLooping(true)
+    sound.music:setVolume(0.25)
+    sound.music:play()
 
     -- Font
     PICO8 = love.graphics.newFont("font/PICO-8.ttf", 5)

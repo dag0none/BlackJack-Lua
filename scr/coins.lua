@@ -16,6 +16,6 @@ function drawCoin(_coin, _x, _y, _limit)
     end
     -- Draw the text coins
     if rest > 0 then
-        love.graphics.print("+" .. tostring(rest), _x + math.ceil(_coin / 5) * 13 + 2, _y - 8)
+        love.graphics.print("+" .. tostring(rest), _x + math.ceil(_coin / 5) * 14, _y - 8)
     end
 end
