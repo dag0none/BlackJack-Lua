@@ -18,29 +18,29 @@ function love.load()
     assets = {
         back = love.graphics.newImage("assets/Back.png"),
         frame = love.graphics.newImage("assets/Frame.png"),
-        card_back = love.graphics.newImage("assets/Card_Back.png"),
-        card_front = love.graphics.newImage("assets/Card_front.png"),
-        coin_base = love.graphics.newImage("assets/Coin_Back.png"),
-        coin_top = love.graphics.newImage("assets/Coin_Top.png"),
+        card_back = love.graphics.newImage("assets/CardBack.png"),
+        card_front = love.graphics.newImage("assets/CardFront.png"),
+        coin_base = love.graphics.newImage("assets/CoinBack.png"),
+        coin_top = love.graphics.newImage("assets/CoinTop.png"),
         diamond = love.graphics.newImage("assets/Diamond.png"),
         club = love.graphics.newImage("assets/Club.png"),
         spade = love.graphics.newImage("assets/Spade.png"),
         heart = love.graphics.newImage("assets/Heart.png"),
         minus = {
-            love.graphics.newImage("assets/Minus_Icon.png"),
-            love.graphics.newImage("assets/Minus_Icon_High.png")
+            love.graphics.newImage("assets/MinusIcon.png"),
+            love.graphics.newImage("assets/MinusIconHigh.png")
         },
         plus = {
-            love.graphics.newImage("assets/Plus_Icon.png"),
-            love.graphics.newImage("assets/Plus_Icon_High.png")
+            love.graphics.newImage("assets/PlusIcon.png"),
+            love.graphics.newImage("assets/PlusIconHigh.png")
         },
         arrow = {
             love.graphics.newImage("assets/Arrow.png"),
-            love.graphics.newImage("assets/Arrow_High.png"),
+            love.graphics.newImage("assets/ArrowHigh.png"),
         },
         restart = {
             love.graphics.newImage("assets/Restart.png"),
-            love.graphics.newImage("assets/Restart_High.png"),
+            love.graphics.newImage("assets/RestartHigh.png"),
         }
     }
 
