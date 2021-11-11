@@ -17,6 +17,8 @@ function Result:draw()
     love.graphics.printf("dealer's hand", 1, 12, 127, "center")
     love.graphics.printf(resultText, 1, 58, 127, "center")
     printScore(player, 93, 88)
+    drawCards(dealer.hand, 38, 22)
+    drawCards(player.hand, 38, 76)
     if drawFase == true then
         love.graphics.draw(assets.card_back, 38, 22)
         love.graphics.print("?", 93, 33)
@@ -24,12 +26,6 @@ function Result:draw()
         printScore(dealer, 93, 33)
     end
 
-    drawCards(dealer.hand, 38, 22)
-    drawCards(player.hand, 38, 76)
-
-    if drawFase == true then
-        love.graphics.draw(assets.card_back, 38, 22)
-    end
 
     drawButton(buttonsRESULT)
 end

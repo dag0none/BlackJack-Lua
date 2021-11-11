@@ -4,10 +4,12 @@ function love.load()
     require "scr/requires"
 
     -- Window Setup
-    win_w = 128
-    win_h = 128
     scale = 5
-    love.window.setMode(win_w * scale, win_h * scale)
+   -- win_w = 128
+    --win_h = 128
+    --love.window.setMode(win_w * scale, win_h * scale)
+    love.window.setTitle("PixelJack")
+    love.window.setIcon(love.image.newImageData("assets/Icon.png"))
 
     -- Global Variables
     bet = 0
@@ -46,9 +48,9 @@ function love.load()
 
     -- Musics and sfx
     sound = {
-        music = love.audio.newSource("music/Music.ogg", "stream"),
-        coin = love.audio.newSource("music/Coin.ogg", "stream"),
-        card = love.audio.newSource("music/Card.ogg", "stream")
+        music = love.audio.newSource("music/Music.ogg", "static"),
+        coin = love.audio.newSource("music/Coin.ogg", "static"),
+        card = love.audio.newSource("music/Card.ogg", "static")
     }
     sound.music:setLooping(true)
     sound.music:setVolume(0.25)
