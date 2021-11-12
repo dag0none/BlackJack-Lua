@@ -25,7 +25,7 @@ function Game:enter()
 
     buttonsGAME = {
         createButton(56, 62, assets.plus, function() buyCard(player) end),
-        createButton(64, 62, assets.minus, function() drawFase = false end)
+        createButton(64, 62, assets.minus, function() drawFase = false end),
     }
 
     drawFase = true
@@ -59,6 +59,7 @@ end
 function Game:draw()    
     love.graphics.print("bet", 10, 81)
     love.graphics.printf("dealer's hand", 1, 12, 127, "center")
+    love.graphics.printf("player's hand", 0, 113, 128, "center")
     printScore(player, 93, 88)
     drawCoin(bet, 16, 104, 5)
 

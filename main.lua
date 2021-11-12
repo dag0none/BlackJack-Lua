@@ -28,6 +28,7 @@ function love.load()
         club = love.graphics.newImage("assets/Club.png"),
         spade = love.graphics.newImage("assets/Spade.png"),
         heart = love.graphics.newImage("assets/Heart.png"),
+        logo = love.graphics.newImage("assets/Logo.png"),
         minus = {
             love.graphics.newImage("assets/MinusIcon.png"),
             love.graphics.newImage("assets/MinusIconHigh.png")
@@ -43,6 +44,10 @@ function love.load()
         restart = {
             love.graphics.newImage("assets/Restart.png"),
             love.graphics.newImage("assets/RestartHigh.png"),
+        },
+        all = {
+            love.graphics.newImage("assets/All.png"),
+            love.graphics.newImage("assets/AllHigh.png"),
         }
     }
 
@@ -50,11 +55,15 @@ function love.load()
     sound = {
         music = love.audio.newSource("music/Music.ogg", "static"),
         coin = love.audio.newSource("music/Coin.ogg", "static"),
-        card = love.audio.newSource("music/Card.ogg", "static")
+        card = love.audio.newSource("music/Card.ogg", "static"),
+        win = love.audio.newSource("music/Win.ogg", "static"),
+        fail = love.audio.newSource("music/Fail.ogg", "static")
     }
     sound.music:setLooping(true)
-    sound.music:setVolume(0.25)
+    sound.music:setVolume(0.1)
     sound.music:play()
+    sound.fail:setVolume(0.3)
+    sound.card:setVolume(0.5)
 
     -- Font
     PICO8 = love.graphics.newFont("font/PICO-8.ttf", 5)
@@ -62,7 +71,7 @@ function love.load()
 
     -- Game States
     GameState.registerEvents()
-    GameState.switch(Bet)
+    GameState.switch(Menu)
 end
 
 function love.update(dt)
@@ -75,6 +84,9 @@ function love.keypressed(key)
     if key == "escape" then
         love.event.quit()
     end
+    if key == "x" and GameState.current() == Menu then
+        GameState.switch(Bet)
+    end
 end
 
 function love.draw()
@@ -82,7 +94,6 @@ function love.draw()
     love.graphics.scale(scale, scale)
     love.graphics.draw(assets.back, 0, 0)
     love.graphics.draw(assets.frame, 0, 0)
-    love.graphics.printf("player's hand", 0, 113, 128, "center")
     GameState:draw()
 end
 

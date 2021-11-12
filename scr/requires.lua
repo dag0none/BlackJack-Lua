@@ -3,6 +3,8 @@ require "scr/card"
 require "scr/states/bet"
 require "scr/states/game"
 require "scr/states/result"
+require "scr/states/menu"
 require "scr/coins"
 require "scr/button"
 require "scr/score"
+
