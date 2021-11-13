@@ -14,7 +14,11 @@ end
 function createCard(_suit, _value)
     local this = {
         suit = _suit,
-        value = _value
+        value = _value,
+        y = 0,
+        x = 140,
+        xTo = 0,
+        yTo = 0
     }
     return this
 end
@@ -29,11 +33,18 @@ function buyCard(_who)
     table.remove(cards[s], v)
 end
 
+function updateCards(_who)
+    for i, card in ipairs(_who) do
+        card.x = smoothApproach(card.x, card.xTo, 0.2)
+    end
+end
+
 function drawCards(_who, _x, _y)
     for i, card in ipairs(_who) do
         gap = (i - 1) * (26 / (#_who - 1))
-        love.graphics.draw(assets.card_front, _x + gap, _y)
-        love.graphics.draw(assets[card.suit], _x + 9 + gap, _y + 13)
-        love.graphics.print(tostring(card.value), _x + 3 + gap, _y + 3)
+        card.xTo = _x + gap
+        love.graphics.draw(assets.card_front, card.x, _y)
+        love.graphics.draw(assets[card.suit], card.x + 9, _y + 13)
+        love.graphics.print(tostring(card.value), card.x + 3, _y + 3)
     end
 end

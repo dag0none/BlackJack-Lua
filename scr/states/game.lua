@@ -54,6 +54,11 @@ function Game:update(dt)
     if player.score[1] > 21 then
         GameState.switch(Result)
     end
+
+ 
+    updateCards(player.hand)
+    updateCards(dealer.hand)
+
 end
 
 function Game:draw()    
@@ -67,7 +72,7 @@ function Game:draw()
     drawCards(player.hand, 38, 76)
 
     if drawFase == true then
-        love.graphics.draw(assets.card_back, 38, 22)
+        love.graphics.draw(assets.card_back, dealer.hand[1].x, 22)
         drawButton(buttonsGAME)
         love.graphics.print("?", 93, 33)
     else 

@@ -7,4 +7,6 @@ require "scr/states/menu"
 require "scr/coins"
 require "scr/button"
 require "scr/score"
+require "scr/util"
+require "scr/transition"
 

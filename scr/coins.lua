@@ -9,9 +9,11 @@ function drawCoin(_coin, _x, _y, _limit)
     -- Draw the coins
     for x = 0, _coin - 1 do 
         if x % _coin == _coin - 1 or (x + 1) % 5 == 0 then
-            love.graphics.draw(assets.coin_top, _x + math.floor(x/5) * 14, _y - (x % 5 * 2 + 8))
+            _Y = _y - (x % 5 * 2 + 8)
+            love.graphics.draw(assets.coin_top, _x + math.floor(x/5) * 14, _Y)
         else
-            love.graphics.draw(assets.coin_base, _x + math.floor(x/5) * 14, _y - (x % 5 * 2))
+            _Y = _y - (x % 5 * 2)
+            love.graphics.draw(assets.coin_base, _x + math.floor(x/5) * 14, _Y)
         end
     end
     -- Draw the text coins

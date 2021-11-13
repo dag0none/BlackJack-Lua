@@ -1,0 +1,3 @@
+Transição
+//DONE Animação de compra de carta = Dividir a função drawCard() em drawCard() e updateCard(), deixando a drawCard() só pra dar draw
+Animação da moeda se movendo

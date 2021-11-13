@@ -20,6 +20,9 @@ function Result:draw()
     printScore(player, 93, 88)
     drawCards(dealer.hand, 38, 22)
     drawCards(player.hand, 38, 76)
+    updateCards(player.hand)
+    updateCards(dealer.hand)
+    
     if drawFase == true then
         love.graphics.draw(assets.card_back, 38, 22)
         love.graphics.print("?", 93, 33)

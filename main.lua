@@ -29,6 +29,7 @@ function love.load()
         spade = love.graphics.newImage("assets/Spade.png"),
         heart = love.graphics.newImage("assets/Heart.png"),
         logo = love.graphics.newImage("assets/Logo.png"),
+        transition = love.graphics.newImage("assets/Transition.png"),
         minus = {
             love.graphics.newImage("assets/MinusIcon.png"),
             love.graphics.newImage("assets/MinusIconHigh.png")
@@ -48,6 +49,10 @@ function love.load()
         all = {
             love.graphics.newImage("assets/All.png"),
             love.graphics.newImage("assets/AllHigh.png"),
+        },
+        half = {
+            love.graphics.newImage("assets/Half.png"),
+            love.graphics.newImage("assets/HalfHigh.png"),
         }
     }
 
@@ -70,7 +75,7 @@ function love.load()
     love.graphics.setFont(PICO8)
 
     -- Game States
-    GameState.registerEvents()
+    GameState.registerEvents{"update"}
     GameState.switch(Menu)
 end
 
@@ -94,7 +99,7 @@ function love.draw()
     love.graphics.scale(scale, scale)
     love.graphics.draw(assets.back, 0, 0)
     love.graphics.draw(assets.frame, 0, 0)
-    GameState:draw()
+    GameState.draw()
 end
 
 function love.mousepressed(mouseX, mouseY, button)
