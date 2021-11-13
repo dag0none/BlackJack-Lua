@@ -13,7 +13,7 @@ function love.load()
 
     -- Global Variables
     mousePressed = {}
-    coins = instantiateCoins(10, 128/2, 140)
+    coins = instantiateCoins(5, 128/2, 140)
     bet = {}
 
     -- Assets
