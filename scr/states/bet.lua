@@ -2,15 +2,15 @@ Bet = {}
 
 function Bet:enter()
     buttonsBET = {
-        createButton(51, 55, assets.plus, function() if coins > 0 then bet = bet + 1 coins = coins - 1 sound.coin:stop() sound.coin:play() end end),
-        createButton(58, 55, assets.minus, function() if bet > 0 then bet = bet - 1 coins = coins + 1 sound.coin:stop() sound.coin:play() end end),
-        createButton(65, 55, assets.half, function() if coins > 0 then bet = bet + math.floor((coins / 2)) coins = math.ceil(coins/2) sound.coin:play() end end),
-        createButton(72, 55, assets.all, function() if coins > 0 then bet = bet + coins coins = 0 sound.coin:play() end end),
-        createButton(61, 68, assets.arrow, function() if bet > 0 then GameState.switch(Game) end end)
+        createButton(51, 55, assets.plus, function() if #coins > 0 then moveCoin(coins, bet) end end),
+        createButton(58, 55, assets.minus, function() if #bet > 0 then moveCoin(bet, coins) end end),
+        createButton(65, 55, assets.half, function() if #coins > 0 then for i = 0, math.floor(#coins/2 - 1) do moveCoin(coins, bet) end end end),
+        createButton(72, 55, assets.all, function() if #coins > 0 then for i = 0, (#coins - 1) do moveCoin(coins, bet) end end end),
+        createButton(61, 68, assets.arrow, function() if #bet > 0 then GameState.switch(Game) end end)
     }
 
     buttonRESTART = {
-        createButton(60, 60, assets.restart, function() coins = 5 GameState.switch(Menu) end)
+        createButton(60, 60, assets.restart, function() coins = instantiateCoins(5, 128/2, 140) GameState.switch(Menu) end)
     }
 
     te1 = -20
@@ -21,9 +21,11 @@ end
 
 function Bet:update(dt)
     updateButton(buttonsBET)
-    if coins <= 0 and bet == 0 then
+    if #coins <= 0 and #bet == 0 then
         updateButton(buttonRESTART)
     end
+    updateCoin(coins)
+    updateCoin(bet)
     coP = smoothApproach(coP, 101, 0.2)
     te1 = smoothApproach(te1, 15, 0.2)
     te2 = smoothApproach(te2, 113, 0.2)
@@ -32,7 +34,7 @@ end
 
 
 function Bet:draw()
-    if coins <= 0 and bet == 0 then
+    if #coins <= 0 and #bet == 0 then
         love.graphics.printf("no coins left, you lose", 0, te3, 128, "center")
         drawButton(buttonRESTART)
     else

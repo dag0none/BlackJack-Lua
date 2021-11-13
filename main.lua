@@ -12,9 +12,9 @@ function love.load()
     love.window.setIcon(love.image.newImageData("assets/Icon.png"))
 
     -- Global Variables
-    bet = 0
-    coins = 5
     mousePressed = {}
+    coins = instantiateCoins(10, 128/2, 140)
+    bet = {}
 
     -- Assets
     assets = {

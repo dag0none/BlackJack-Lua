@@ -35,6 +35,7 @@ end
 function Game:update(dt)
     updateScore(player)
     updateScore(dealer)
+    updateCoin(bet)
     
     if drawFase == true then
         updateButton(buttonsGAME)

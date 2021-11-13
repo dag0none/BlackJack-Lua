@@ -36,21 +36,21 @@ end
 
 function checkResult()
     if player.score[1] > 21 then
-        bet = 0
+        bet = {}
         resultText = "you burst"
         sound.fail:play()
     elseif dealer.score[1] > 21 then
-        coins = coins + bet * 2
-        bet = 0
+        coins = instantiateCoins(#bet*2 + #coins)
+        bet = {}
         resultText = "dealer burst"
         sound.win:play()
     elseif player.score[1] < dealer.score[1] then
-        bet = 0
+        bet = {}
         resultText = "dealer wins"
         sound.fail:play()
     elseif player.score[1] > dealer.score[1] then
-        coins = coins + bet * 2
-        bet = 0
+        coins = instantiateCoins(#bet*2 + #coins)
+        bet = {}
         resultText = "player wins"
         sound.win:play()
     else
