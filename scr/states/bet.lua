@@ -10,7 +10,7 @@ function Bet:enter()
     }
 
     buttonRESTART = {
-        createButton(60, 60, assets.restart, function() coins = instantiateCoins(5, 128/2, 140) GameState.switch(Menu) end)
+        createButton(60, 60, assets.restart, function() coins = instantiateCoins(5, 128/2, 150) GameState.switch(Menu) end)
     }
 
     te1 = -20
@@ -40,8 +40,8 @@ function Bet:draw()
     else
         love.graphics.printf("place your bet", 0, te1, 128, "center")
         love.graphics.printf("player's hand", 0, te2, 128, "center")
+        drawButton(buttonsBET)
         drawCoin(coins, 64, coP, 20)
         drawCoin(bet, 64, 47, 20)
-        drawButton(buttonsBET)
     end
 end
